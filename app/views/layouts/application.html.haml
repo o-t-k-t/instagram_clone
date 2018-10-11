@@ -1,0 +1,42 @@
+!!!
+%html
+  %head
+    %meta{ :content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type' }/
+    %title
+      = content_for?(:title) ? yield(:title) : ''
+    = csrf_meta_tags
+    %meta{ charset: 'utf-8' }/
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{ content: 'width=device-width, initial-scale=1', name: 'viewport' }/
+  %body
+    %nav.navbar.is_mobile
+      .navbar-brand
+        = link_to 'Instagram Clone', '#', class: 'navbar-item is-size-4 has-text-weight-bold	'
+      .navbar-menu.is-active.is-mobile
+        .navbar-start
+          .navbar-item
+            = link_to 'フィード一覧', feeds_path, class: 'navbar-item'
+          - if logged_in?
+            .navbar-item
+              = link_to '投稿する', new_feed_path, class: 'navbar-item'
+        .navbar-end
+          - if logged_in?
+            .navbar-item
+              = link_to current_user.name, user_path(current_user.id), class: 'navbar-item'
+            .navbar-item
+              .buttons
+                = link_to 'Logout', session_path(current_user.id), method: :delete, class: 'button is-light'
+          - else
+            .navbar-item
+              .buttons
+                = link_to 'Sign up', new_user_path, class: 'navbar-item button is-dark'
+            .navbar-item
+              .buttons
+                = link_to 'Login', new_session_path, class: 'navbar-item button is-light'
+    - flash.each do |key, value|
+      .notification.is-info
+        = content_tag(:div, value, class: key.to_s)
+    %section.section
+      .container
+        = yield

@@ -1,0 +1,15 @@
+- content_for(:title) { 'ログイン' }
+%h1.title ログイン
+.form-group
+  = form_with(scope: :session, url: sessions_path, local: true) do |f|
+    .field
+      .control
+        = f.label :email, class: 'label'
+        = f.email_field :email, class: 'form-control'
+    .field
+      .control
+        = f.label :password, class: 'label'
+        = f.password_field :password, class: 'form-control'
+    .field
+      .control
+        = f.submit 'ログイン', class: 'button'

@@ -1,0 +1,9 @@
+- content_for(:title) { "#{@user.name}さんのページ" }
+%h1.title
+  = @user.name
+  さんのページ
+.columns
+  .card
+    .card-content
+      %p.title.is-4 メールアドレス
+      %p.content= @user.email
