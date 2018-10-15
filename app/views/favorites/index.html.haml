@@ -6,11 +6,14 @@
         %p= feed.description
         %p= image_tag feed.image
         %small #{feed.created_at} #{feed.user.name} authored
-        - if current_user?(feed.user_id)
-          %nav.level.is-mobile
-            .level-left
+        %nav.level.is-mobile
+          .level-left
+            .level-item
+              = link_to 'お気に入り解除', favorite_path(feed.favorites[0].id), method: :delete, class: 'button'
+            - if current_user?(feed.user_id)
               %span.tag.is-light あなたのフィード
-            .level-right
+          .level-right
+            - if current_user?(feed.user_id)
               .level-item
                 = link_to '削除', feed_path(feed.id), method: :delete, data: { confirm: '本当に削除していいですか?' }
               .level-item

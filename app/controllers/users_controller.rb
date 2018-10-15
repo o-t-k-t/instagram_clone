@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    binding.pry
     if @user.save
       log_in(@user.id)
       redirect_to user_path(current_user.id), notice: 'Created the account'
