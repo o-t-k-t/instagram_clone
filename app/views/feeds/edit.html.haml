@@ -1,2 +1,3 @@
-%h1 Feeds#edit
-%p Find me in app/views/feeds/edit.html.haml
+%h1 Editing feed
+= render partial: 'form', locals: { feed: @feed }
+= link_to 'もどる', feeds_path

@@ -1,2 +1,3 @@
-%h1 Feeds#new
-%p Find me in app/views/feeds/new.html.haml
+%h1.title  フィード投稿
+= render partial: 'form', locals: { feed: @feed }
+= link_to '戻る', feeds_path

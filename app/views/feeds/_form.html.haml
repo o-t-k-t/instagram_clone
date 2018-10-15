@@ -1,0 +1,20 @@
+= form_with model: feed, url: form_submit_path, local: true do |f|
+  - if feed.errors.any?
+    .notification.is-warning
+      %h2 #{pluralize(feed.errors.count, 'error')} prohibited this feed from being saved:
+      %ul
+        - feed.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :title
+    .control= f.text_field :title
+  .field
+    = f.label :description
+    .control= f.text_field :description
+  .field
+    = f.label :image
+    .control
+      = f.file_field :image
+  .field
+    .control
+      = f.submit '投稿'

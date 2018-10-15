@@ -6,5 +6,6 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+  resources :favorites, only: %i[index create destroy]
   resources :sessions, only: %i[new create destroy]
 end

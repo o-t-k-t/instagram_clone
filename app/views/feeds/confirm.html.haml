@@ -1,0 +1,19 @@
+%h1.title 投稿内容確認
+%p 以下の内容で、送信します。
+%section.section
+  = form_with(model: @feed, url: feeds_path, local: true) do |form|
+    = form.hidden_field :description
+    %p.content= @feed.description
+    = image_tag(@feed.image)
+    = form.hidden_field :image_cache
+    = form.hidden_field :user_id
+    .field
+      .control
+        = form.submit '投稿する', class: 'button'
+  = form_with(model: @feed, url: new_feed_path, local: true, method: :get) do |form|
+    = form.hidden_field :description
+    = form.hidden_field :image
+    = form.hidden_field :user_id
+    .field
+      .control
+        = form.submit 'もどる', name: 'back', class: 'button'

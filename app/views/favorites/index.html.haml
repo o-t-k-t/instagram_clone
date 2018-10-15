@@ -1,4 +1,4 @@
-%h1.title フィード一覧
+%h1.title お気に入りフィード一覧
 - @feeds.each do |feed|
   %article.media
     .media-content
@@ -15,8 +15,3 @@
                 = link_to '削除', feed_path(feed.id), method: :delete, data: { confirm: '本当に削除していいですか?' }
               .level-item
                 = link_to '編集', edit_feed_path(feed.id)
-        -# - else
-        -#   %nav.level.is-mobile
-        -#     .level-right
-        -#       .level-item
-        -#         = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button is-primary'
