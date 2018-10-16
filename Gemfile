@@ -41,6 +41,9 @@ group :development, :test do
   gem 'rubocop'
   gem 'haml_lint'
 
+  # Test data
+  gem 'faker'
+
   # Test
   gem 'selenium-webdriver'
 end

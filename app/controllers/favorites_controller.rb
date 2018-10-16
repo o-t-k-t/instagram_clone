@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
 
   def create
     fav = current_user.favorites.new(feed_id: params[:feed_id])
-    notice = 
+    notice =
       if fav.save
         'お気に入り登録しました'
       else
