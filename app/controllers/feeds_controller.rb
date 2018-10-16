@@ -18,7 +18,9 @@ class FeedsController < ApplicationController
   end
 
   def create
-    Feed.create!(feed_params)
+    @feed = Feed.new(feed_params)
+    @feed.save!
+    FeedMailer.feed_mail(@feed).deliver
     redirect_to feeds_path
   end
 
