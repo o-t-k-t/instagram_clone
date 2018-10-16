@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user.id)
-      redirect_to user_path(current_user.id), notice: 'Created the account'
+      redirect_to user_path(current_user.id), notice: 'あなたのアカウントを作成しました'
     else
       render :new
     end

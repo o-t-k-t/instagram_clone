@@ -21,12 +21,12 @@
           - if logged_in?
             .navbar-item= link_to current_user.name, user_path(current_user.id), class: 'navbar-item'
             .navbar-item
-              .buttons= link_to 'Logout', session_path(current_user.id), method: :delete, class: 'button is-light'
+              .buttons= link_to 'ログアウト', session_path(current_user.id), method: :delete, class: 'button is-light'
           - else
             .navbar-item
-              .buttons= link_to 'Sign up', new_user_path, class: 'navbar-item button is-dark'
+              .buttons= link_to 'ユーザー登録', new_user_path, class: 'navbar-item button is-dark'
             .navbar-item
-              .buttons= link_to 'Login', new_session_path, class: 'navbar-item button is-light'
+              .buttons= link_to 'ログイン', new_session_path, class: 'navbar-item button is-light'
     - flash.each do |key, value|
       .notification.is-info= content_tag(:div, value, class: key.to_s)
     %section.section
