@@ -4,6 +4,6 @@ class FeedMailer < ApplicationMailer
 
     binding.pry
 
-    mail to: 't.okabe1986@gmail.com', subject: 'フィード投稿確認メール'
+    mail to: @feed.email, subject: 'フィード投稿確認メール'
   end
 end
