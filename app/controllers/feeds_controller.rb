@@ -20,6 +20,7 @@ class FeedsController < ApplicationController
   def create
     @feed = Feed.new(feed_params)
     @feed.save!
+
     FeedMailer.feed_mail(@feed).deliver
     redirect_to feeds_path
   end
