@@ -12,7 +12,7 @@ module InstagramClone
     config.active_record.default_timezone = :local
 
     config.i18n.default_locale = :ja
-    
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -20,7 +20,6 @@ module InstagramClone
       g.assets false
       g.helper false
     end
-
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
