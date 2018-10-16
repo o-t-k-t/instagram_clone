@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :require_logged_in
+
   def index
     @feeds = current_user.favorite_feeds
                          .includes(:favorites)
