@@ -19,4 +19,7 @@
           %nav.level.is-mobile
             .level-right
               .level-item
-                = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'
+                - if @favorite_feeds.include?(feed)
+                  = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'
+                - else
+                  %span.tag.is-primary あなたのお気に入り

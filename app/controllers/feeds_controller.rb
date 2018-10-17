@@ -1,6 +1,7 @@
 class FeedsController < ApplicationController
   def index
     @feeds = Feed.all.order('created_at desc')
+    @favorite_feeds = current_user.favorite_feeds
     @favorite = Favorite.new
   end
 
