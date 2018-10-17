@@ -15,7 +15,7 @@
         .navbar-start
           .navbar-item= link_to 'フィード一覧', feeds_path, class: 'navbar-item'
           - if logged_in?
-            -# .navbar-item= link_to 'お気に入りフィード', favorites_path, class: 'navbar-item'
+            .navbar-item= link_to 'お気に入りフィード一覧', favorites_path, class: 'navbar-item'
             .navbar-item= link_to '投稿する', new_feed_path, class: 'navbar-item'
         .navbar-end
           - if logged_in?
