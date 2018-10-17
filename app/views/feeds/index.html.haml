@@ -20,6 +20,6 @@
             .level-right
               .level-item
                 - if @favorite_feeds.include?(feed)
-                  = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'
-                - else
                   %span.tag.is-primary あなたのお気に入り
+                - else
+                  = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'
