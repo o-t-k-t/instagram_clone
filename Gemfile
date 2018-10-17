@@ -28,6 +28,9 @@ gem "bulma-rails", "~> 0.4.2"
 # Auth
 gem 'bcrypt', '~> 3.1.11'
 
+# Test data
+gem 'faker'
+
 group :development, :test do
   # Debug
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -40,9 +43,6 @@ group :development, :test do
   # Static analyze
   gem 'rubocop'
   gem 'haml_lint'
-
-  # Test data
-  gem 'faker'
 
   # Test
   gem 'selenium-webdriver'
