@@ -20,7 +20,7 @@ class FavoritesController < ApplicationController
 
   def destroy
     current_user.favorites
-                .find_by_id(params[:id])
+                .find(params[:id])
                 .destroy
     redirect_to feeds_path
   end
