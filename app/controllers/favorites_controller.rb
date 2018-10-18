@@ -2,9 +2,9 @@ class FavoritesController < ApplicationController
   before_action :require_logged_in
 
   def index
-    @feeds = current_user.favorite_feeds
-                         .includes(:favorites)
-                         .order('favorites.created_at')
+    @favorites = current_user.favorites
+                             .includes(:feed)
+                             .order('favorites.created_at')
   end
 
   def create

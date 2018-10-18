@@ -1,20 +1,20 @@
 %h1.title お気に入りフィード一覧
-- @feeds.each do |feed|
+- @favorites.each do |fav|
   %article.media
     .media-content
       .content
-        %p= feed.description
-        %p= image_tag feed.image
-        %small #{feed.created_at}に#{feed.user.name}さんが投稿
+        %p= fav.feed.description
+        %p= image_tag fav.feed.image
+        %small #{fav.feed.created_at}に#{fav.feed.user.name}さんが投稿
         %nav.level.is-mobile
           .level-left
             .level-item
-              = link_to 'お気に入り解除', favorite_path(feed.favorites[0].id), method: :delete, class: 'button'
-            - if current_user?(feed.user_id)
+              = link_to 'お気に入り解除', favorite_path(fav), method: :delete, class: 'button'
+            - if current_user?(fav.user)
               %span.tag.is-light あなたのフィード
           .level-right
-            - if current_user?(feed.user_id)
+            - if current_user?(fav.user)
               .level-item
-                = link_to '削除', feed_path(feed.id), method: :delete, data: { confirm: '本当に削除していいですか?' }
+                = link_to '削除', feed_path(fav.feed), method: :delete, data: { confirm: '本当に削除していいですか?' }
               .level-item
-                = link_to '編集', edit_feed_path(feed.id)
+                = link_to '編集', edit_feed_path(fav.feed)
