@@ -6,20 +6,21 @@
         %p= feed.description
         %p= image_tag feed.image
         %small #{feed.created_at}に#{feed.user.name}さんが投稿
-        - if current_user?(feed.user_id)
-          %nav.level.is-mobile
-            .level-left
-              %span.tag.is-light あなたのフィード
-            .level-right
-              .level-item
-                = link_to '削除', feed_path(feed.id), method: :delete, data: { confirm: '本当に削除していいですか?' }
-              .level-item
-                = link_to '編集', edit_feed_path(feed.id)
-        - else
-          %nav.level.is-mobile
-            .level-right
-              .level-item
-                - if @favorite_feeds.include?(feed)
-                  %span.tag.is-primary あなたのお気に入り
-                - else
-                  = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'
+        - if logged_in?
+          - if current_user?(feed.user_id)
+            %nav.level.is-mobile
+              .level-left
+                %span.tag.is-light あなたのフィード
+              .level-right
+                .level-item
+                  = link_to '削除', feed_path(feed.id), method: :delete, data: { confirm: '本当に削除していいですか?' }
+                .level-item
+                  = link_to '編集', edit_feed_path(feed.id)
+          - else
+            %nav.level.is-mobile
+              .level-right
+                .level-item
+                  - if @favorite_feeds.include?(feed)
+                    %span.tag.is-primary あなたのお気に入り
+                  - else
+                    = link_to 'お気に入りにする', favorites_path(feed_id: feed.id), method: :post, class: 'button'

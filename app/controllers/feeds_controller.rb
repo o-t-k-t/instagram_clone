@@ -1,8 +1,9 @@
 class FeedsController < ApplicationController
   before_action :require_logged_in, except: %i[index]
+
   def index
     @feeds = Feed.all.order('created_at desc')
-    @favorite_feeds = current_user.favorite_feeds
+    @favorite_feeds = current_user&.favorite_feeds
     @favorite = Favorite.new
   end
 
