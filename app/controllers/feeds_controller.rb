@@ -5,15 +5,14 @@ class FeedsController < ApplicationController
   def index
     @feeds = Feed.all.order('created_at desc')
     @favorite_feeds = current_user&.favorite_feeds
-    @favorite = Favorite.new
   end
 
   def new
     @feed =
       if params[:back]
-        Feed.new(feed_params)
+        current_user.feeds.build(feed_params)
       else
-        Feed.new
+        current_user.feeds.build
       end
   end
 
@@ -21,9 +20,7 @@ class FeedsController < ApplicationController
   end
 
   def create
-    @feed = Feed.new(feed_params)
-    @feed.save!
-
+    @feed = current_user.feeds.create!(feed_params)
     FeedMailer.feed_mail(@feed).deliver
     redirect_to feeds_path
   end
@@ -42,8 +39,7 @@ class FeedsController < ApplicationController
   end
 
   def confirm
-    @feed = Feed.new(feed_params)
-    @feed.user_id = current_user.id
+    @feed = current_user.feeds.build(feed_params)
     render :new and return if @feed.invalid?
   end
 
@@ -54,7 +50,7 @@ class FeedsController < ApplicationController
   end
 
   def set_current_user_feed
-    @feed = cuurent_user.feeds.find_by_id(params[:id])
+    @feed = current_user.feeds.find_by_id(params[:id])
     redirect_to feeds_path unless @feed
   end
 end

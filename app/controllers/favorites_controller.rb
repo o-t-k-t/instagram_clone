@@ -8,9 +8,8 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    fav = current_user.favorites.new(feed_id: params[:feed_id])
     notice =
-      if fav.save
+      if current_user.favorites.create(feed_id: params[:feed_id])
         'お気に入り登録しました'
       else
         'すでにお気に入りのフィードです'
@@ -19,9 +18,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    current_user.favorites
-                .find(params[:id])
-                .destroy
+    current_user.favorites.find_by_id(params[:id])&.destroy
     redirect_to feeds_path
   end
 end
