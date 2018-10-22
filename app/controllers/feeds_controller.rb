@@ -1,5 +1,6 @@
 class FeedsController < ApplicationController
   before_action :require_logged_in, except: %i[index]
+  before_action :set_current_user_feed, only: %i[edit update destroy]
 
   def index
     @feeds = Feed.all.order('created_at desc')
@@ -17,7 +18,6 @@ class FeedsController < ApplicationController
   end
 
   def edit
-    @feed = Feed.find(params[:id])
   end
 
   def create
@@ -29,7 +29,7 @@ class FeedsController < ApplicationController
   end
 
   def update
-    if Feed.find(params[:id])&.update(feed_params)
+    if @feed.update(feed_params)
       redirect_to feeds_path
     else
       render :edit
@@ -37,7 +37,7 @@ class FeedsController < ApplicationController
   end
 
   def destroy
-    Feed.find(params[:id]).delete
+    @feed.delete
     redirect_to feeds_path
   end
 
@@ -51,5 +51,10 @@ class FeedsController < ApplicationController
 
   def feed_params
     params.require(:feed).permit(:description, :image, :image_cache, :user_id)
+  end
+
+  def set_current_user_feed
+    @feed = cuurent_user.feeds.find_by_id(params[:id])
+    redirect_to feeds_path unless @feed
   end
 end
