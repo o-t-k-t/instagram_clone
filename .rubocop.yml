@@ -6,12 +6,13 @@ AllCops:
     - "vendor/**/*" # rubocop config/default.yml
     - "db/schema.rb"
     - "config/environments/*"
+    - "config/deploy.rb"
     - "bin/*"
   DisplayCopNames: true
   TargetRubyVersion: 2.3
 
-# Style/AsciiComments:
-#   Enabled: false
+Style/AsciiComments:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false

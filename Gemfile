@@ -16,6 +16,7 @@ gem 'puma', '~> 3.7'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'unicorn'
 
 # Frontend
 gem 'bulma-rails', '~> 0.4.2'
@@ -32,6 +33,9 @@ gem 'dotenv-rails' ##追記
 
 # Test data
 gem 'faker'
+
+# Deploy
+gem 'therubyracer', platforms: :ruby
 
 group :development, :test do
   # Debug
@@ -59,6 +63,13 @@ group :development do
 
   # Mail
   gem 'letter_opener_web'
+
+  # Deploy
+  gem 'capistrano', '3.6.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
