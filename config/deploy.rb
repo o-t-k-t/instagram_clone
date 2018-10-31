@@ -14,7 +14,7 @@ set :branch, ENV['BRANCH'] || 'master'
 set :deploy_to, '/var/www/instagram_clone'
 
 # シンボリックリンクをはるフォルダ・ファイル
-set :linked_files, %w[env config/secrets.yml]
+set :linked_files, %w[.env config/secrets.yml]
 set :linked_dirs, %w[log tmp/pids tmp/cache tmp/sockets public/uploads]
 
 # 保持するバージョンの個数(※後述)
