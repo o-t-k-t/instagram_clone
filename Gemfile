@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Core
+ruby '2.3.0'
 gem 'rails', '~> 5.1.1'
 
 # Middleware
