@@ -28,6 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Auth
 gem 'bcrypt', '~> 3.1.11'
+gem 'dotenv-rails' ##追記
 
 # Test data
 gem 'faker'
