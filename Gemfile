@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -14,16 +14,17 @@ gem 'puma', '~> 3.7'
 
 # Image Upload
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 
 # Frontend
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
+gem 'bulma-rails', '~> 0.4.2'
 gem 'coffee-rails', '~> 4.2'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
-gem "bulma-rails", "~> 0.4.2"
+gem 'jbuilder', '~> 2.5'
+gem 'sass-rails', '~> 5.0'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 
 # Auth
 gem 'bcrypt', '~> 3.1.11'
@@ -33,16 +34,16 @@ gem 'faker'
 
 group :development, :test do
   # Debug
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
 
-  gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry-rails'
 
   # Static analyze
-  gem 'rubocop'
   gem 'haml_lint'
+  gem 'rubocop'
 
   # Test
   gem 'selenium-webdriver'
@@ -50,13 +51,13 @@ end
 
 # Development environment
 group :development do
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'web-console', '>= 3.3.0'
 
   # Mail
   gem 'letter_opener_web'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
