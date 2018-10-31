@@ -14,7 +14,7 @@ gem 'puma', '~> 3.7'
 
 # Image Upload
 gem 'carrierwave'
-gem 'fog'
+gem 'fog-aws'
 gem 'mini_magick'
 gem 'unicorn'
 
